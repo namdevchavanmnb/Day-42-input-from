@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width">
+    <title>Basic Validation</title>
+    <link rel="stylesheet" href="../CSS/style.css">
+</head>
+
+<body>
+    <form>
+        <header class="headerContainer">
+            <h1>HTML 5 Form Input Fields</h1>
+        </header>
+        <div>
+            <label for="text">Enter First Name: </label>
+            <input type="text" id="text" name="text">
+            <error-output class="text-error" for="text"></error-output>
+        </div>
+
+        <div>
+            <label for="email">Enter Email: </label>
+            <input type="email" id="email" name="email">
+            <error-output class="email-error" for="email"></error-output>
+        </div>
+
+        <div>
+            <label for="tel">Enter mobileNo: </label>
+            <input type="tel" id="tel" name="tel">
+            <error-output class="tel-error" for="tel"></error-output>
+        </div>
+
+        <div>
+            <label for="password">Enter Password: </label>
+            <input type="password" id="password" name="password">
+            <error-output class="password-error" for="password"></error-output>
+        </div>
+
+        <div>
+            <button>Submit</button>
+        </div>
+    </form>
+    <script>
+        const text = document.querySelector('#text');
+        const textError = document.querySelector('.text-error');
+        text.addEventListener('input', function() {
+            const regName = /^[A-Z][a-z]{2,}$/;
+            if (regName.test(text.value))
+                textError.textContent = "";
+            else textError.textContent = "Invalid first name ";
+        });
+
+        const emailError = document.querySelector('.email-error');
+        email.addEventListener('input', function() {
+            const regEmail = /^[A-Za-z0-9]+([-\\\\.\\\\+\\\\_][0-9A-Za-z]+)*[@][A-Za-z0-9]+.[a-zA-Z]{2,4}([\\\\.\\\\,][a-z]{2,3})?$/;
+            if (regEmail.test(email.value))
+                emailError.textContent = "";
+            else emailError.textContent = "Invalid email ";
+        });
+
+        const telError = document.querySelector('.tel-error');
+        tel.addEventListener('input', function() {
+            const regtel = /^[9][1][ ]{1}[6-9]{1}[0-9]{9}$/;
+            if (regtel.test(tel.value))
+                telError.textContent = "";
+            else telError.textContent = "Invalid MonileNo ";
+        });
+
+        const pwdError1 = document.querySelector('.password-error');
+        password.addEventListener('input', function() {
+            const regPwd = /^[a-zA-Z]{5,}[a-z0-9]{2,}[0-9@!,]{1,}$;
+            if (regPwd.test(password.value))
+                pwdError1.textContent = "";
+            else pwdError1.textContent = "Invalid Password ";
+        });
+    </script>
+</body>
+
+</html>
